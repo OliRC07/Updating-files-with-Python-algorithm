@@ -7,11 +7,12 @@ In this system, access to restricted content is managed through an allow list of
 ## Open the file that contains the allow list
 
 First of all, I opened the “allow\_list.txt” file and assigned its name as a string to the import\_file variable.  
-![][image1]
+![1 - First of all, I opened the “allow_list txt” file and assigned its name as a string to the import_file variable](https://github.com/user-attachments/assets/7a82e208-8099-4c53-9578-ee1826ccb47f)
+
 
 Then, I opened the file using a with statement in order to read it.  
 In my algorithm, the with statement along with the open() function in read mode ("r") permits the access to the allow list file. This lets me read the IP addresses stored in it. Using with ensures that the file is automatically closed after it's read, which helps manage system resources. The line with open(import\_file, "r") as file`:` tells the program which file to open import\_file and what to do with it ("r" for read). The as file part assigns the opened file to a variable named file, which I can then use to read the contents within the with block.  
-![][image2]
+![2 - Then, I opened the file using a with statement in order to read it](https://github.com/user-attachments/assets/e0afeb08-7efe-47a6-a80e-4281ee265dce)
 
 ## Read the file contents
 
@@ -19,31 +20,40 @@ To read the contents of the file, I used the .read() method, which turns the fil
 
 To sum up, this part of the code loads the contents of "allow\_list.txt" into a string format, making it easier to work with the data. We might use this later in the program for organizing or extracting specific information.
 
-![][image3]
+![3 Read the file contents](https://github.com/user-attachments/assets/b0cd1428-2b32-492e-9243-4ab3ca2f3798)
 
 ## Convert the string into a list
 
-To remove individual IP addresses from the allow list, I first needed to convert the data into a list format. I did this by using the .split() method on the ip\_addresses string. This method breaks the string into a list of items based on whitespace, which is useful since the IP addresses are separated by whitespaces. By converting the string into a list, it becomes easier to identify and remove specific IP addresses. I then stored the resulting list back into the same variable, ip\_addresses.![][image4]
+To remove individual IP addresses from the allow list, I first needed to convert the data into a list format. I did this by using the .split() method on the ip\_addresses string. This method breaks the string into a list of items based on whitespace, which is useful since the IP addresses are separated by whitespaces. By converting the string into a list, it becomes easier to identify and remove specific IP addresses. I then stored the resulting list back into the same variable, ip\_addresses.
+![4 - convert the string into a list](https://github.com/user-attachments/assets/619405da-2cb1-4248-a55c-10f879e670cf)
 
 ## Iterate through the remove list
 
 An important part of this algorithm is looping through each IP address in the remove\_list. To do this, I used a for loop in order to repeat a set of actions for each item in a sequence. In this case, it allows me to apply specific operations to every IP address in the remove\_list. The loop begins with the keyword for, followed by a loop variable that I called element, and then the keyword in, which tells Python to go through each item in the sequence. Each value from remove\_list is assigned to the loop variable one at a time during the iteration.  
-![][image5]
+![5 Iterative through the remove list](https://github.com/user-attachments/assets/9edd4e71-5b54-419b-aabd-75aa33f64766)
+
 
 ## Remove IP addresses that are on the remove list
 
 In my algorithm, the goal was to remove any IP address from the ip\_addresses list if it also appeared in the remove\_list. Since there were no duplicate IPs in ip\_addresses, I could handle this efficiently. Inside the for loop, I added a conditional statement to check if the current loop variable element existed in ip\_addresses. This check was necessary because trying to remove an item that isn't in the list would cause an error.  
-![][image6]  
-If the condition was true, I then used the .remove() method on ip\_addresses, passing element as the argument to remove each matching IP address.![][image7]
+ ![6a - Remove IP addresses that are on the remove list](https://github.com/user-attachments/assets/abe55b35-3024-439b-adfe-9f7267076327)
+
+If the condition was true, I then used the .remove() method on ip\_addresses, passing element as the argument to remove each matching IP address.
+
+![6b - Remove IP addresses that are on the remove list](https://github.com/user-attachments/assets/41b91f80-7fe0-4372-8008-eab09e0e420b)
 
 ## Update the file with the revised list of IP addresses 
 
-As the final step in my algorithm, I needed to update the allow list file with the new list of IP addresses. To do that, I first had to convert the list back into a string format. I used the .join() method to take all items in a list (or other iterable) and join them into a single string. I used "\\n" as the separator so that each IP address would appear on a new line in the final string.![][image8]  
+As the final step in my algorithm, I needed to update the allow list file with the new list of IP addresses. To do that, I first had to convert the list back into a string format. I used the .join() method to take all items in a list (or other iterable) and join them into a single string. I used "\\n" as the separator so that each IP address would appear on a new line in the final string.
+![7 - Update the file with the revised list of IP addresses ](https://github.com/user-attachments/assets/021f401e-d6d3-40d2-8c5f-53b2abe3ff90)
+
 Next, I used another with statement along with the .write() method to update the file. This time, I opened the file using the "w" mode as the second argument in the open() function to tell Python to open the file for writing, which means any existing content will be overwritten.  
-![][image9]
+![7b - Update the file with the revised list of IP addresses](https://github.com/user-attachments/assets/1f61ba3c-4632-461f-b2c1-6a541767a21c)
+
 
 Inside the with block, I used the .write() method to save the updated allow list (now in string format) back to "allow\_list.txt". This ensures that any IP addresses removed from the list will no longer have access to the restricted content. I applied .write() to the file object defined in the with statement and passed the ip\_addresses variable as the argument, so the file would be overwritten with the new list of IP addresses.  
-![][image10]
+![7c - Update the file with the revised list of IP addresses](https://github.com/user-attachments/assets/c49d1b8d-bc39-46b3-bc31-f7f4aec7692e)
+
 
 ## Summary
 
